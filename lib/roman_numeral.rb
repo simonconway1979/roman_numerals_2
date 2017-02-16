@@ -1,8 +1,10 @@
 class RomanNumeral
 
   def initialize
-    @digit_array = []
     @numeral_array = []
+    @ones = ["I", "X", "C", "M"]
+    @fives = ["V", "L", "D"]
+    @nines = ["IX", "XC", "CM"]
   end
 
   def roman_digit(digit)
@@ -15,8 +17,20 @@ class RomanNumeral
   end
 
   def roman(number)
-    array_to_string(roman_digit(number))
+    number_array(number).each_with_index { |d, i|
+      @digit = d.to_i
+      @index = i
+      @digit_array = []
+      roman_digit(@digit)
+    }
+    array_to_string(@numeral_array)
   end
+
+
+  def number_array(number)
+    number.to_s.split("").reverse
+  end
+
 
 private
 
@@ -27,27 +41,26 @@ private
   def involves_nine
     if @digit == 9
       @digit -= 9
-      return "IX"
+      return @nines[@index]
     end
   end
 
   def involves_four
     if @digit == 4
       @digit += 1
-      return "I"
+      return @ones[@index]
     end
   end
 
   def involves_five
       if [4, 5, 6, 7, 8].include?(@digit)
         @digit -= 5
-        return "V"
+        return @fives[@index]
       end
   end
 
-
   def involves_one
-    "I" * @digit
+    @ones[@index] * @digit
   end
 
 end
