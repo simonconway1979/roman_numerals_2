@@ -1,11 +1,11 @@
 class RomanNumeral
 
-  def initialize(number)
-    @number = number
+  def initialize
+    @numeral
   end
 
-  def roman
-    "I"
+  def roman(number)
+    "I" * number
   end
-  
+
 end
