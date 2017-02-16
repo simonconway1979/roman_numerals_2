@@ -24,4 +24,7 @@ describe RomanNumeral do
     expect(subject.roman(4)).to eq "IV"
   end
 
+  it "returns IX when passed 9 as an argument" do
+    expect(subject.roman(9)).to eq "IX"
+  end
 end
