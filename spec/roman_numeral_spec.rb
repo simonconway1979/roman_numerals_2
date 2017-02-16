@@ -16,5 +16,12 @@ describe RomanNumeral do
     expect(subject.roman(5)).to eq "V"
   end
 
+  it "returns VIII when passed 8 as an argument" do
+    expect(subject.roman(8)).to eq "VIII"
+  end
+
+  it "returns IV when passed 4 as an argument" do
+    expect(subject.roman(4)).to eq "IV"
+  end
 
 end
